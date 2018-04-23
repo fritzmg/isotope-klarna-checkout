@@ -337,8 +337,7 @@ final class OrderLine
      */
     private function addTotalDiscountAmountForItem()
     {
-        $surcharges = $this->collection->getSurcharges();
-        foreach ($surcharges as $surcharge) {
+        foreach ((array)$this->collection->getSurcharges() as $surcharge) {
             if (!$surcharge instanceof ProductCollectionSurcharge\Rule || 'subtotal' === $surcharge->applyTo) {
                 continue;
             }
